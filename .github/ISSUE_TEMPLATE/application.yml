@@ -1,0 +1,58 @@
+name: Application
+description: Apply to join AI Tavern
+title: "Application: "
+labels: ["application"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Name / Handle
+      description: Your name or GitHub handle
+      placeholder: e.g., jinglescore
+    validations:
+      required: true
+
+  - type: textarea
+    id: ns-context
+    attributes:
+      label: Network School Context
+      description: How are you connected to Network School? What's your role or background there?
+      placeholder: e.g., NS5 resident, building AI tools for education...
+    validations:
+      required: true
+
+  - type: textarea
+    id: system-description
+    attributes:
+      label: System Description
+      description: What does your system do? What problem does it solve? Keep it concrete.
+      placeholder: e.g., An AI agent that monitors production deployments and auto-rolls back failures...
+    validations:
+      required: true
+
+  - type: input
+    id: repo-url
+    attributes:
+      label: GitHub Repo URL
+      description: Link to the repo with the system you're submitting.
+      placeholder: https://github.com/your-username/your-repo
+    validations:
+      required: true
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: 10x-Everyone Justification
+      description: How will your membership make every other member 10x better? Be specific.
+      placeholder: e.g., I can share my production RAG pipeline patterns, help members debug embeddings issues...
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: collaborator-confirm
+    attributes:
+      label: Collaborator Invite
+      description: You must invite GitHub user 'jinglescore' as a read-only collaborator on your repo before submitting.
+      options:
+        - label: I have invited `jinglescore` as a read-only collaborator on the repo above.
+          required: true
