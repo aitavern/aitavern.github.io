@@ -3,9 +3,13 @@ import '../styles/global.css'
 
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title = 'AI Tavern' } = Astro.props;
+const {
+  title = 'AI Tavern — Contribution-Gated Guild for AI Builders',
+  description = 'A private guild for AI builders who ship production systems. Every member makes every other member 10x better.'
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -15,6 +19,11 @@ const { title = 'AI Tavern' } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/favicon.svg" />
     <title>{title}</title>
   </head>
   <body>
