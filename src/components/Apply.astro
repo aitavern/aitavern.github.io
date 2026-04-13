@@ -1,0 +1,40 @@
+---
+const steps = [
+  { number: "01", label: "Submit", description: "Who you are, what you built, and a link to the live repo." },
+  { number: "02", label: "Screen", description: "Chief of Staff agent reviews your submission for fit and impact." },
+  { number: "03", label: "Demo", description: "Live demo at a guild meeting. Show the system, not the slides." },
+  { number: "04", label: "Vote", description: "The room votes. Unanimous consent required." },
+  { number: "05", label: "Install", description: "Collison install — a member personally onboards you." },
+];
+---
+
+<section id="apply" class="px-6 py-24 sm:py-32">
+  <div class="mx-auto max-w-3xl">
+    <p class="mb-4 font-mono text-xs tracking-[0.3em] text-accent uppercase">The Gate</p>
+    <p class="mb-12 text-lg text-text-muted">
+      There is no sign-up. There is no invite code. You apply with proof of work.
+    </p>
+
+    <div class="mb-16 space-y-6">
+      {steps.map((step) => (
+        <div class="flex gap-6 border-l border-border pl-6">
+          <span class="font-mono text-2xl font-bold text-accent/30">{step.number}</span>
+          <div>
+            <p class="mb-1 font-mono text-sm font-semibold tracking-wide text-text uppercase">{step.label}</p>
+            <p class="text-sm leading-relaxed text-text-muted">{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <a
+        href="mailto:apply@aitavern.org"
+        class="inline-block border border-accent bg-accent px-10 py-4 font-mono text-sm font-bold tracking-widest text-base transition-all hover:bg-accent-light uppercase"
+      >
+        Apply
+      </a>
+      <p class="mt-4 font-mono text-xs text-text-muted">Come with something that works.</p>
+    </div>
+  </div>
+</section>
