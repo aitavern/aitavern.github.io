@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@theme {
+  --color-base: #0a0a0a;
+  --color-surface: #141414;
+  --color-surface-light: #1a1a1a;
+  --color-border: #2a2a2a;
+  --color-accent: #d97706;
+  --color-accent-light: #f59e0b;
+  --color-text: #e5e5e5;
+  --color-text-muted: #a3a3a3;
+  --font-display: "Inter", "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
