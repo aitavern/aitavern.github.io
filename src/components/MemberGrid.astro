@@ -1,0 +1,65 @@
+---
+const members = [
+  {
+    name: "KAI_0x",
+    contribution: "Built an autonomous code review agent that catches security vulns before CI runs",
+    repo: "https://github.com/placeholder/code-review-agent",
+  },
+  {
+    name: "SABLE.ETH",
+    contribution: "Shipped a multi-model RAG pipeline serving 50k daily queries in production",
+    repo: "https://github.com/placeholder/rag-pipeline",
+  },
+  {
+    name: "NOCTURN",
+    contribution: "Created an AI-powered supply chain optimizer reducing procurement costs 40%",
+    repo: "https://github.com/placeholder/supply-chain-ai",
+  },
+  {
+    name: "VERA_SYS",
+    contribution: "Deployed a real-time voice agent handling 10k concurrent customer support calls",
+    repo: "https://github.com/placeholder/voice-agent",
+  },
+  {
+    name: "ASHCROFT",
+    contribution: "Built an ML-driven anomaly detection system for financial transaction monitoring",
+    repo: "https://github.com/placeholder/anomaly-detect",
+  },
+  {
+    name: "GHOST.DEV",
+    contribution: "Shipped a fine-tuning platform that reduced model training costs by 60% for startups",
+    repo: "https://github.com/placeholder/finetune-platform",
+  },
+];
+---
+
+<section id="members" class="px-6 py-24 sm:py-32">
+  <div class="mx-auto max-w-5xl">
+    <p class="mb-4 font-mono text-xs tracking-[0.3em] text-accent uppercase">Guild Members</p>
+    <p class="mb-12 text-text-muted">Each arrived with a system. Each makes the others stronger.</p>
+
+    {members.length > 0 ? (
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {members.map((member) => (
+          <div class="group border border-border bg-surface p-6 transition-colors hover:border-accent/40">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center bg-surface-light font-mono text-sm font-bold text-accent">
+              {member.name.slice(0, 2)}
+            </div>
+            <p class="mb-2 font-mono text-sm font-semibold tracking-wide text-text">{member.name}</p>
+            <p class="mb-4 text-sm leading-relaxed text-text-muted line-clamp-3">{member.contribution}</p>
+            <a
+              href={member.repo}
+              class="font-mono text-xs tracking-wider text-accent/70 transition-colors hover:text-accent uppercase"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Repo &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p class="text-text-muted border border-border bg-surface p-8 text-center">The guild is forming. First members incoming.</p>
+    )}
+  </div>
+</section>
