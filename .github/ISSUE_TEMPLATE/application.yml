@@ -14,17 +14,27 @@ body:
 
         **Need help articulating your system?** Copy this prompt into Claude, ChatGPT, or any LLM:
 
-        > I'm applying to AI Tavern, a private guild for AI builders. I need to describe a production system I built and explain how it would 10x other AI builders.
+        > I'm applying to AI Tavern. Help me fill two textareas — concrete, no marketing.
         >
-        > My system is: [paste your repo URL or describe what it does]
+        > Repo: `<URL or local path>`
         >
-        > Help me write a clear, specific description that covers:
-        > 1. What it does concretely (not abstractly) — name the specific tools, frameworks, and workflows
-        > 2. What problem it solves and for whom
-        > 3. How someone else would actually use it to multiply their output — be specific about workflows, not vague about "value"
-        > 4. What makes it different from existing open-source alternatives
+        > **Step 1 — screen the code, not the README.** Open the repo and read the actual source for the main pipeline modules and agent prompts. Pull real file paths, function names, and constants. If you can't read files (plain chat LLM), tell me — I'll paste the relevant files instead of you guessing from the README.
         >
-        > Be concrete and specific. Name actual technologies, actual workflows, actual outcomes. Avoid marketing language. If something only works in certain conditions, say so.
+        > **Field 1 — System Description** (~60 words, 3 sentences). Order: input→output, then stack, then daily use. No file paths here. Output inside a code block so I can copy it cleanly. Match this style:
+        >
+        > ```
+        > A TypeScript pipeline that monitors GitHub issues labeled 'auto', decomposes tasks, generates code via Claude API, opens PRs with tests, self-merges on QA pass. Used daily for production.
+        > ```
+        >
+        > **Field 2 — 10x Justification** (~3 bullets, ~35 words each). Each bullet: builder persona → specific file/function they'd lift → one condition if relevant. File paths required, pulled from Step 1. Output inside a code block. Match this style:
+        >
+        > ```
+        > - Agent builders lift `decomposer.md` — splits specs over 12 files into child sub-issues.
+        > - Code-gen builders lift `buildGate.ts` — baseline-aware verification.
+        > - Ops builders lift `recovery.ts` — crash-recovery sweep on startup.
+        > ```
+        >
+        > Rules: name real tech and real files. State what only works under certain conditions. No "seamless," "revolutionary," "self-healing." If you can't back a claim with a file you actually opened, cut it.
 
   - type: input
     id: display-name
