@@ -1,40 +1,117 @@
 ---
+import { GITHUB_REPO_URL } from '../config/github';
+
+const APPLY_URL = `${GITHUB_REPO_URL}/issues/new?template=application.yml`;
+
 const steps = [
-  { number: "01", label: "Submit", description: "Who you are, what you built, and a link to the live repo." },
-  { number: "02", label: "Screen", description: "Chief of Staff agent reviews your submission for fit and impact." },
-  { number: "03", label: "Demo", description: "Live demo at a guild meeting. Show the system, not the slides." },
-  { number: "04", label: "Vote", description: "The room votes. Unanimous consent required." },
-  { number: "05", label: "Install", description: "Collison install — a member personally onboards you." },
+  {
+    number: "01",
+    label: "Apply",
+    description: "Open a GitHub issue using our template. Provide your repo URL, describe your system, and explain why it 10x's every existing member.",
+  },
+  {
+    number: "02",
+    label: "Pre-Filter",
+    description: "Our Chief of Staff agent assesses your written claims for specificity, feasibility, and leverage. You choose: text-only, or let the agent screen your repo (public or private) for a stronger application.",
+  },
+  {
+    number: "03",
+    label: "Demo",
+    description: "Live demo with the council. Walk us through what your system does, how it works, and how others can use it. Show the system, not the slides.",
+  },
+  {
+    number: "04",
+    label: "Champion",
+    description: "At least one existing member must see the potential in your system, want to install it on their own machine, and commit to using it daily. No champion, no membership. The guild only accepts what the guild will actually use.",
+  },
+  {
+    number: "05",
+    label: "Code Review",
+    description: "Invite our bot as a read-only collaborator on your repo. The agent reviews your actual codebase to verify claims made in the application and demo. Outcome: clean, conditions, or flagged.",
+  },
+  {
+    number: "06",
+    label: "Membership",
+    description: "You're in. Invited to the GitHub org, added to the leverage map, and your repo transfers to the org so every member can run it, fork it, and improve it. Your system becomes shared leverage.",
+  },
 ];
 ---
 
 <section id="apply" class="px-6 py-24 sm:py-32">
   <div class="mx-auto max-w-3xl">
     <p class="mb-4 font-mono text-xs tracking-[0.3em] text-accent uppercase">The Gate</p>
+    <h2 class="mb-4 text-3xl font-bold tracking-tight text-text sm:text-4xl">Apply to AI Tavern</h2>
     <p class="mb-12 text-lg text-text-muted">
       There is no sign-up. There is no invite code. You apply with proof of work.
     </p>
 
-    <div class="mb-16 space-y-6">
-      {steps.map((step) => (
-        <div class="flex gap-6 border-l border-border pl-6">
-          <span class="font-mono text-2xl font-bold text-accent/30">{step.number}</span>
-          <div>
-            <p class="mb-1 font-mono text-sm font-semibold tracking-wide text-text uppercase">{step.label}</p>
-            <p class="text-sm leading-relaxed text-text-muted">{step.description}</p>
-          </div>
-        </div>
-      ))}
+    <!-- What to Submit -->
+    <div class="mb-16">
+      <h3 class="mb-4 font-mono text-xs tracking-[0.3em] text-accent uppercase">What to Submit</h3>
+      <p class="mb-4 text-sm leading-relaxed text-text-muted">
+        Describe a production-grade AI system. Something you use daily. Something your
+        business cannot operate without. A tool, framework, pipeline, or system other members can adopt
+        to 10x their own work.
+      </p>
+      <p class="text-sm leading-relaxed text-text-muted">
+        Not a demo. Not a tutorial. Not a proof of concept. The bar is high on purpose.
+        Every member got in by clearing it. Your system is your proof of work.
+      </p>
     </div>
 
+    <!-- Process Steps -->
+    <div class="mb-16">
+      <h3 class="mb-6 font-mono text-xs tracking-[0.3em] text-accent uppercase">The Process</h3>
+      <div class="space-y-8">
+        {steps.map((step) => (
+          <div class="flex gap-6 border-l border-border pl-6">
+            <span class="font-mono text-2xl font-bold text-accent/30">{step.number}</span>
+            <div>
+              <p class="mb-1 font-mono text-sm font-semibold tracking-wide text-text uppercase">{step.label}</p>
+              <p class="text-sm leading-relaxed text-text-muted">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Before You Submit -->
+    <div class="mb-6 rounded border border-accent/30 bg-accent/5 p-6">
+      <p class="mb-2 font-mono text-sm font-semibold tracking-wide text-accent uppercase">Before you submit</p>
+      <p class="text-sm leading-relaxed text-text-muted">
+        No repo access needed upfront. You describe your system and explain its leverage in the application.
+        Code review happens <strong class="text-text">after</strong> the live demo. You choose when to share access.
+        During the pre-filter, you can optionally let the agent screen your repo, public or private, for a stronger application.
+      </p>
+    </div>
+
+    <!-- The Commitment -->
+    <div class="mb-12 rounded border border-border bg-surface p-6">
+      <p class="mb-2 font-mono text-sm font-semibold tracking-wide text-text uppercase">The Commitment</p>
+      <p class="mb-3 text-sm leading-relaxed text-text-muted">
+        If accepted, your repository <strong class="text-text">transfers</strong> to the AI Tavern GitHub org.
+        Ownership moves. Forks and mirrors don't count.
+      </p>
+      <p class="text-sm leading-relaxed text-text-muted">
+        This is the point. Every member gets hands on the code. Everyone can run it, improve it, and send PRs back.
+        Your system stops being yours alone and becomes shared leverage. That's how it 10x's everyone,
+        including you. If you're not ready for that, you're not ready for the guild.
+      </p>
+    </div>
+
+    <!-- Apply Button -->
     <div class="text-center">
       <a
-        href="/apply"
+        href={APPLY_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         class="inline-block border border-accent bg-accent px-10 py-4 font-mono text-sm font-bold tracking-widest text-base transition-all hover:bg-accent-light uppercase"
       >
-        Apply
+        Apply on GitHub
       </a>
-      <p class="mt-4 font-mono text-xs text-text-muted">Come with something that works.</p>
+      <p class="mt-4 font-mono text-xs text-text-muted">
+        Opens a GitHub issue with the application template. A GitHub account is required.
+      </p>
     </div>
   </div>
 </section>

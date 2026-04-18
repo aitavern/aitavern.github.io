@@ -1,0 +1,121 @@
+[
+  {
+    "name": "application",
+    "color": "0366d6",
+    "description": "New application issue — orchestrator polls these for pre-filter"
+  },
+
+  {
+    "name": "status:awaiting-access",
+    "color": "fbca04",
+    "description": "Private repo — waiting for collaborator invitation"
+  },
+  {
+    "name": "status:assessing",
+    "color": "5319e7",
+    "description": "Pre-filter agent is running"
+  },
+  {
+    "name": "status:tentative-accept",
+    "color": "0e8a16",
+    "description": "Pre-filter recommends accept — council should schedule demo"
+  },
+  {
+    "name": "status:tentative-reject",
+    "color": "d93f0b",
+    "description": "Pre-filter recommends reject"
+  },
+  {
+    "name": "status:needs-council-decision",
+    "color": "e36209",
+    "description": "Flagged for manual council review"
+  },
+  {
+    "name": "status:demo-passed",
+    "color": "0e8a16",
+    "description": "Council approved the demo — needs a champion"
+  },
+  {
+    "name": "status:champion-needed",
+    "color": "fbca04",
+    "description": "Waiting for a council member to champion"
+  },
+  {
+    "name": "status:champion-secured",
+    "color": "0e8a16",
+    "description": "Champion committed — code vetting can run"
+  },
+  {
+    "name": "status:code-vetting",
+    "color": "5319e7",
+    "description": "Code-vetting agent is running"
+  },
+  {
+    "name": "status:code-vetted",
+    "color": "0e8a16",
+    "description": "Code-vetting passed — ready for acceptance"
+  },
+  {
+    "name": "status:conditions-pending",
+    "color": "e36209",
+    "description": "Code-vetting returned conditions — applicant must fix within 30 days"
+  },
+  {
+    "name": "status:rejected",
+    "color": "d93f0b",
+    "description": "Application rejected"
+  },
+  {
+    "name": "status:accepted",
+    "color": "0e8a16",
+    "description": "Fully accepted — accept-member pipeline will onboard"
+  },
+  {
+    "name": "status:transfer-pending",
+    "color": "fbca04",
+    "description": "Waiting for applicant to transfer repo to the org"
+  },
+  {
+    "name": "status:onboarded",
+    "color": "0e8a16",
+    "description": "Member fully onboarded — leverage map updated"
+  },
+
+  {
+    "name": "verdict:tentative-accept",
+    "color": "0e8a16",
+    "description": "Pre-filter agent verdict: tentative-accept"
+  },
+  {
+    "name": "verdict:tentative-reject",
+    "color": "d93f0b",
+    "description": "Pre-filter agent verdict: tentative-reject"
+  },
+  {
+    "name": "verdict:needs-discussion",
+    "color": "fbca04",
+    "description": "Pre-filter agent verdict: needs-discussion"
+  },
+
+  {
+    "name": "vetting:clean",
+    "color": "0e8a16",
+    "description": "Code-vetting outcome: clean"
+  },
+  {
+    "name": "vetting:conditions",
+    "color": "e36209",
+    "description": "Code-vetting outcome: conditions (fixable within 30 days)"
+  },
+  {
+    "name": "vetting:misrepresented",
+    "color": "d93f0b",
+    "description": "Code-vetting outcome: misrepresented — code doesn't match claims"
+  },
+
+  {
+    "name": "code-screened",
+    "color": "c5def5",
+    "description": "Code was screened during pre-filter — Stage 5 can skip redundant vetting"
+  }
+]

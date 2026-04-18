@@ -1,4 +1,5 @@
 ---
+import { GITHUB_REPO_URL } from '../config/github';
 ---
 
 <footer class="border-t border-border px-6 py-12">
@@ -7,7 +8,7 @@
       AI Tavern at <span class="text-text">Network School</span>
     </p>
     <a
-      href="https://github.com/aitavern"
+      href={GITHUB_REPO_URL}
       class="font-mono text-xs tracking-wide text-text-muted transition-colors hover:text-accent"
       target="_blank"
       rel="noopener noreferrer"

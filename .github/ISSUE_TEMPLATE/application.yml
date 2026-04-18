@@ -3,30 +3,35 @@ description: Apply to join AI Tavern
 title: "Application: "
 labels: ["application"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a GitHub repo with a near production-grade system — something you use daily, something your business cannot operate without. A tool, framework, pipeline, or system that other members can adopt and 10x their own startup, business, productivity, or processes.
+
+        Not a demo. Not a tutorial. Not a proof of concept. The bar is high on purpose. Every member got in by clearing it. Your repo is your proof of work.
+
+        ---
+
+        **Need help articulating your system?** Copy this prompt into Claude, ChatGPT, or any LLM:
+
+        > I'm applying to AI Tavern, a private guild for AI builders. I need to describe a production system I built and explain how it would 10x other AI builders.
+        >
+        > My system is: [paste your repo URL or describe what it does]
+        >
+        > Help me write a clear, specific description that covers:
+        > 1. What it does concretely (not abstractly) — name the specific tools, frameworks, and workflows
+        > 2. What problem it solves and for whom
+        > 3. How someone else would actually use it to multiply their output — be specific about workflows, not vague about "value"
+        > 4. What makes it different from existing open-source alternatives
+        >
+        > Be concrete and specific. Name actual technologies, actual workflows, actual outcomes. Avoid marketing language. If something only works in certain conditions, say so.
+
   - type: input
-    id: name
+    id: display-name
     attributes:
-      label: Name / Handle
-      description: Your name or GitHub handle
-      placeholder: e.g., jinglescore
-    validations:
-      required: true
-
-  - type: textarea
-    id: ns-context
-    attributes:
-      label: Network School Context
-      description: How are you connected to Network School? What's your role or background there?
-      placeholder: e.g., NS5 resident, building AI tools for education...
-    validations:
-      required: true
-
-  - type: textarea
-    id: system-description
-    attributes:
-      label: System Description
-      description: What does your system do? What problem does it solve? Keep it concrete.
-      placeholder: e.g., An AI agent that monitors production deployments and auto-rolls back failures...
+      label: Display Name
+      description: "How you want to appear on the tavern roster (e.g., 'Jane Doe' or 'Jane D.')."
+      placeholder: Jane Doe
     validations:
       required: true
 
@@ -34,8 +39,18 @@ body:
     id: repo-url
     attributes:
       label: GitHub Repo URL
-      description: Link to the repo with the system you're submitting.
+      description: "Link to the repo you're submitting."
       placeholder: https://github.com/your-username/your-repo
+    validations:
+      required: true
+
+  - type: textarea
+    id: system-description
+    attributes:
+      label: System Description
+      description: "What does your system do? What problem does it solve? Be concrete — name specific tools, frameworks, and workflows. Not 'an AI tool' but 'a pipeline that takes GitHub issues, decomposes them into tasks, generates PRs with tests, and self-merges after QA passes.'"
+      placeholder: |
+        e.g., A TypeScript pipeline that monitors GitHub issues labeled "auto", decomposes them into implementation tasks, generates code using Claude API with repo context, creates PRs with automated tests, runs QA review, and self-merges on approval. Handles worktree isolation for parallel work. Used daily for production feature development.
     validations:
       required: true
 
@@ -43,16 +58,21 @@ body:
     id: justification
     attributes:
       label: 10x-Everyone Justification
-      description: How will your membership make every other member 10x better? Be specific.
-      placeholder: e.g., I can share my production RAG pipeline patterns, help members debug embeddings issues...
+      description: "How will your contribution make every other member at least 10x better? Be specific about what workflows you enable, what problems you eliminate, what capabilities you add. 'Could be useful' is not enough — describe the concrete multiplier."
+      placeholder: |
+        e.g., Members building AI agents can plug into my task decomposition pipeline instead of building their own. Members doing code generation get my QA review patterns. Members shipping products get autonomous PR creation — their issues become merged code without manual intervention.
     validations:
       required: true
 
-  - type: checkboxes
-    id: collaborator-confirm
+  - type: dropdown
+    id: review-mode
     attributes:
-      label: Collaborator Invite
-      description: You must invite GitHub user 'jinglescore' as a read-only collaborator on your repo before submitting.
+      label: Code Review Preference
+      description: |
+        Choose how you'd like your submission assessed during the initial screening. All paths lead to the same demo stage. If your repo is public, opting into code screening helps us understand your system better. If it's private, you can invite our review bot for the same benefit.
       options:
-        - label: I have invited `jinglescore` as a read-only collaborator on the repo above.
-          required: true
+        - "Text only — assess based on my description"
+        - "Screen my repo — it's public, the agent can read it"
+        - "Screen my repo — it's private, I'll invite @jinglescore as read-only collaborator"
+    validations:
+      required: true

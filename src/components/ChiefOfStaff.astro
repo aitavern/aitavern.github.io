@@ -1,0 +1,45 @@
+---
+import { GITHUB_REPO_URL } from '../config/github';
+
+const COS_URL = `${GITHUB_REPO_URL}/tree/main/chief-of-staff`;
+---
+
+<section id="chief-of-staff" class="px-6 py-24 sm:py-32">
+  <div class="mx-auto max-w-3xl">
+    <p class="mb-4 font-mono text-xs tracking-[0.3em] text-accent uppercase">Governance by Code</p>
+    <h2 class="mb-8 text-3xl font-bold leading-tight tracking-tight text-text sm:text-4xl">
+      The gate is an agent,<br />
+      <span class="text-accent">not a committee.</span>
+    </h2>
+
+    <div class="space-y-6 text-lg leading-relaxed text-text-muted">
+      <p>
+        Every application runs through our Chief of Staff agent. It reads your issue,
+        assesses your claims against a written rubric, optionally screens your repo,
+        and produces a structured report the council reviews before the demo.
+      </p>
+      <p>
+        <span class="text-text font-semibold">The agent gates the rubric, not the verdict.</span>
+        Humans still run the demo. Humans still pick Champions. Humans still vote on membership.
+        The agent's job is removing favoritism and keeping the bar stable as the guild grows.
+        Same standard for every applicant. No hidden rules. No back channels.
+      </p>
+      <p>
+        The code is open source. The rubric is open source. Read it before you apply.
+        If you think the bar is wrong, you can see exactly why we set it there and argue
+        the spec on GitHub.
+      </p>
+    </div>
+
+    <div class="mt-12">
+      <a
+        href={COS_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block border border-border bg-surface px-6 py-3 font-mono text-xs tracking-widest text-text-muted transition-colors hover:border-accent/40 hover:text-accent uppercase"
+      >
+        Read the Chief of Staff &rarr;
+      </a>
+    </div>
+  </div>
+</section>

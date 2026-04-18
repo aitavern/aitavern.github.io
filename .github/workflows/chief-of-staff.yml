@@ -1,0 +1,68 @@
+name: Chief of Staff
+
+# Polls GitHub issues on a schedule and dispatches to pipelines
+# (new-application, code-vetting, accept-member).
+#
+# Secrets required:
+#   GH_TOKEN          - Personal access token (or GitHub App token) with
+#                       scopes: repo, admin:org (for inviting members to the org).
+#                       Used by `gh` CLI and the pipelines' issue/repo operations.
+#   ANTHROPIC_API_KEY - Picked up by `claude -p` subprocesses spawned by the agents.
+#
+# GitHub cron schedules can be delayed (5-10 minutes) under platform load.
+# That is acceptable for this orchestrator — it is a poller, not a real-time handler.
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: 'Specific issue URL or number to process (optional). Leave blank to poll.'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: chief-of-staff
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Claude Code CLI
+        run: pnpm add -g @anthropic-ai/claude-code
+
+      - name: Run orchestrator
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "${{ inputs.issue }}" ]; then
+            bun chief-of-staff/orchestrator.ts --issue "${{ inputs.issue }}"
+          else
+            bun chief-of-staff/orchestrator.ts
+          fi
